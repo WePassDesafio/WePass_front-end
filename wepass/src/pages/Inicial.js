@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import api from '../services/api';
+import axios from 'axios';
+
 import Card from '../components/card';
 import {View, Text} from 'react-native';
 
@@ -10,11 +12,12 @@ export default class Main extends Component {
 
   async getEventos() {
     try {
-      const res = fetch(
+      const response = await axios.get(
         'https://localhost:5001/api/Evento/BuscarTodosEventos',
-      ).then(res => console.log(res.json()));
+      );
+      console.warn(response);
     } catch (error) {
-      console.error(error);
+      console.error('err', error);
     }
   }
 
